@@ -42,14 +42,36 @@ class Particle {
 let particles = [];
 
 function setup() {
-    createCanvas(720, 400);
-    for (let i = 0; i < width / 10; i++) {
+    createCanvas(displayWidth, displayHeight);
+    for (let i = 0; i < width / 5; i++) {
         particles.push(new Particle());
+    }
+}
+
+/**
+ * Fullscreen on mouse click.
+ * Click again to remove fullscreen.
+ */
+
+function mousePressed() {
+    fullscreen(true);
+}
+
+function checkFS() {
+    if (!fullscreen()) {
+        textSize(50);
+        strokeWeight(0.5);
+
+        line(0, 12, width, 12);
+        textAlign(CENTER, TOP);
+        text("Cliquez pour mettre en plein écran !", 0, 12, width);
     }
 }
 
 function draw() {
     background("#0f0f0f");
+    checkFS();
+
     for (let i = 0; i < particles.length; i++) {
         particles[i].createParticle();
         particles[i].moveParticle();
