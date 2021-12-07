@@ -4,7 +4,8 @@ let b;
 
 function setup() {
     createCanvas(1000, 1000, WEBGL);
-    b = new Barcode(0, 0, 500);
+    let msg = "007567816412";
+    b = new Barcode(msg, 0, 0, 475);
 }
 
 function draw() {
